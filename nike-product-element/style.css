@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  background-color: #052521;
+
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.products {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  height: 367.5px;
+}
+
+.wrapper {
+  padding: 20px;
+  width: 300px;
+  color: white;
+  background-color: #303030;
+  border-radius: 1rem;
+  border: 1px solid #7c7c7c;
+  border-bottom: none;
+  transition: all 0.5s ease-out;
+}
+
+.wrapper[data-open="true"] {
+  color: black;
+  background-color: #ffffff;
+}
+
+.wrapper[data-open="true"] .expand-button > img {
+  rotate: -90deg;
+}
+
+.wrapper-content {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  align-items: center;
+}
+
+button {
+  border: none;
+  color: #7c7c7c;
+  cursor: pointer;
+}
+
+.expand-button {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.expand-button > img {
+  rotate: 0deg;
+  width: 2.25rem;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  transition: rotate 0.35s ease-out;
+}
+
+.buy-button {
+  border-radius: 9999px;
+  background-color: black;
+  font-size: 1rem;
+  padding: 8px 12px;
+  color: white;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease-out;
+}
+
+.container[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.content > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 0.625rem;
+  background-color: #dcdcdc;
+}
