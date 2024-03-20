@@ -6,7 +6,9 @@ buttons.forEach((button, index) => {
   button.addEventListener("click", (event) => {
     const attribute = "data-open";
     const isOpen =
-      containers[index].getAttribute(attribute) === "true" ? true : false;
+      containers[index].getAttribute(attribute) === "true"
+        ? true
+        : false;
     if (isOpen) {
       wrappers[index].setAttribute(attribute, "false");
       containers[index].setAttribute(attribute, "false");
