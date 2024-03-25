@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  background-color: #052521;
+}
+
+html {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.menu--wrapper {
+  display: grid;
+  gap: 1.5rem;
+  width: fit-content;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: black;
+}
+
+.menu--profile-image {
+  width: 100%;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.menu--content {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.menu--content button {
+  text-align: start;
+  background-color: transparent;
+  border: none;
+  color: crimson;
+  text-decoration: underline;
+}
+
+.menu--profile-title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.menu--profile-title-container h4 {
+  text-transform: capitalize;
+  line-height: 1;
+}
+
+.menu--profile-title-container p {
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 0.625rem;
+}
+
+.menu--row {
+  --bg: #171516;
+  --tint: #888d91;
+  display: grid;
+  gap: 0rem;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg);
+  padding: 1rem;
+  grid-template-columns: 2.5rem 0rem;
+  border-radius: 1rem;
+  transition: grid-template-columns 0.35s ease-out, gap 0.35s ease-out;
+}
+
+.menu--row.menu--row-stacked {
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.menu--row.menu--row-stacked:first-child {
+  border-start-start-radius: 1rem;
+  border-start-end-radius: 1rem;
+}
+
+.menu--row.menu--row-stacked:last-child {
+  border-end-start-radius: 1rem;
+  border-end-end-radius: 1rem;
+}
+
+.menu--row.menu--row-stacked > :nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+#menu:hover .menu--row {
+  grid-template-columns: 2.5rem 17.5rem;
+  padding-right: 1rem;
+  gap: 1rem;
+}
+
+.menu--row > :nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.menu--row p:nth-child(2) {
+  color: var(--tint);
+}
+
+#menu:hover .menu--row > :nth-child(2) {
+  opacity: 1;
+}
+
+.menu--profile {
+  background-color: transparent;
+  padding: 0;
+  grid-template-columns: 4rem 0rem;
+}
+
+#menu:hover .menu--profile {
+  grid-template-columns: 4rem 16rem;
+}
+
+.menu--row-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu--row-icon {
+  width: 1.875rem;
+  aspect-ratio: 1 / 1;
+  fill: var(--tint);
+}
+
+#toggle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.menu--top-rows,
+.menu--bottom-rows {
+  display: grid;
+}
+
+.menu--top-rows {
+  gap: 0.5rem;
+}
+
+.menu--bottom-rows {
+  gap: 0.125rem;
+}
+
+.menu--buttons {
+  display: grid;
+  grid-template-columns: 0px 0px;
+  gap: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-out, grid-template-columns 0.35s ease-out;
+  transition-delay: 0s;
+}
+
+#menu:hover .menu--buttons {
+  opacity: 1;
+  grid-template-columns: 1fr 1fr;
+  transition: opacity 0.35s 0.35s ease-out, grid-template-columns 0.35s ease-out;
+}
+
+.menu--buttons-btn {
+  cursor: pointer;
+  border: none;
+  padding: 0.875rem 1.25rem;
+  border-radius: 0.5rem;
+  color: #fcfefa;
+  text-transform: capitalize;
+  background: linear-gradient(to top right, #824afe 0%, #aa54df 100%);
+}
+
+.menu--buttons-btn:nth-child(2n) {
+  background: #151716;
+}
