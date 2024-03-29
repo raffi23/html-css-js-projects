@@ -8,7 +8,7 @@ const daysOfWeek = [
   "Saturday",
 ];
 let unit = "metric";
-const apiKey = "aa2fb8b84a9218b0b259a4da9971b2cb";
+const apiKey = "put your api key here";
 const getApiURL = (latitude, longitude) =>
   `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
 
