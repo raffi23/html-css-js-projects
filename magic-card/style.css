@@ -1,0 +1,121 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 60vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #052521;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  color: rgba(88 250 209 / 0%);
+  cursor: pointer;
+  font-family: "Dancing Script", cursive;
+  font-size: 5em;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.card:hover {
+  color: rgb(88 250 209 / 100%);
+  transition: color 1s;
+}
+.card:hover:before,
+.card:hover:after {
+  opacity: 1;
+  animation: spin 2.5s linear forwards infinite;
+}
+
+.card:before,
+.card:after {
+  content: "";
+  position: absolute;
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  background-image: linear-gradient(
+    var(--rotate),
+    #14dca6,
+    #a1ae0f 43%,
+    #7d0c0c
+  );
+  z-index: -1;
+}
+
+.card::before {
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  top: -1%;
+  left: -2%;
+}
+
+.card::after {
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 2rem;
+  font-size: 3rem;
+  transition: opacity 0.5s;
+}
+
+.card:hover + a {
+  opacity: 0;
+}
