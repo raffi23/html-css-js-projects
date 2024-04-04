@@ -1,0 +1,168 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+:root {
+  --card-height: 60vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  height: 100vh;
+  color: white;
+  background-color: #052521;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+#card {
+  position: relative;
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 0.1875rem;
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(88 250 209 / 100%);
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin-bottom: 3rem;
+}
+
+#card #card--before,
+#card #card--after {
+  position: absolute;
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  background-image: linear-gradient(
+    var(--rotate),
+    #14dca6,
+    #a1ae0f 43%,
+    #7d0c0c
+  );
+  z-index: -1;
+}
+
+#card--before {
+  width: 104%;
+  height: 102%;
+  border-radius: 0.5rem;
+  top: -1%;
+  left: -2%;
+}
+
+#card--after {
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+}
+
+#card--images {
+  position: absolute;
+  inset: 0rem;
+  display: grid;
+  place-content: center;
+  grid-template-columns: 50%;
+  grid-template-rows: 50%;
+  border-radius: 0.375rem;
+}
+
+#card--images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-row: 1;
+  grid-column: 1;
+  opacity: 0;
+  transition: all 0.35s ease-out;
+}
+
+#drop-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: center;
+}
+
+#drop-area h1 {
+  text-transform: uppercase;
+  user-select: none;
+  transition: all 0.35s ease-out;
+}
+
+#drop-area h1.hidden {
+  opacity: 0;
+}
+
+#card.highlight #card--before,
+#card.highlight #card--after {
+  opacity: 1;
+  animation: spin 2.5s linear forwards infinite;
+}
+
+#upload--button {
+  cursor: pointer;
+  border: none;
+  border-radius: 2rem;
+  background: linear-gradient(var(--rotate), #14dca6, #daeb15 43%, #14dca6);
+  background-size: 200%;
+  background-position: 0px;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+  transition: all 0.35s ease-out;
+}
+
+#upload--button:hover {
+  background-position: -300px;
+}
+
+#upload--button.hidden {
+  opacity: 0;
+  cursor: default;
+}
+
+#upload--button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
